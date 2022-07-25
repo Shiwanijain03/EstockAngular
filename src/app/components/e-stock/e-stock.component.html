@@ -1,0 +1,114 @@
+
+<div style="background: #ECECEC;padding:10px;overflow: auto;height: 100%;">
+ <nz-card style="height: 100%;">
+    
+<div nz-row style="width: 100%;">
+    <div nz-col nzSpan = 4>
+        <img src = "assets/logo.svg" width="60%" height="60%"/>
+    </div>
+    <div nz-col nzSpan = 4>
+        
+        <button nz-button size="small" nzType="primary" (click) ="addCompany()">Add company</button>
+    </div>
+    <div nz-col nzSpan = 8>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="All companies list" 
+[(ngModel)]="selectedCompany" style="width: 60%;" (ngModelChange) = "companySelectChange(false)">
+    <nz-option *ngFor = "let option of allCompaniesList"
+    [nzLabel] = "getCompanyListName(option)"
+    [nzValue] = "option.Code"
+    >
+    </nz-option>
+    
+</nz-select>
+    </div>
+    <div nz-col nzSpan = 8>
+        <input nz-input   [(ngModel)]="searchCompanyCode" style="width: 50%;" placeholder="Company Code"/>&nbsp;&nbsp;
+        <button nz-button size="small" nzType="primary" (click) ="companySearchClick()">Search</button>
+    </div>
+</div> 
+
+<div nz-row style="width: 100%;">
+    <div nz-col nzSpan = 8></div>
+    <div nz-col nzSpan = 4><span style="color: black;">Company Code</span></div>
+    <div nz-col nzSpan = 4><span style="color: black;">{{getCompanyCode()}}</span></div>
+    <div nz-col nzSpan = 8></div>
+</div>
+<div nz-row style="width: 100%;">
+    <div nz-col nzSpan = 8></div>
+    <div nz-col nzSpan = 4><span style="color: black;">Company Name</span></div>
+    <div nz-col nzSpan = 4><span style="color: black;">{{getCompanyName()}}</span></div>
+    <div nz-col nzSpan = 8></div>
+</div>
+<br/>
+<div nz-row style="width: 100%;">    
+    <div nz-col nzSpan = 4></div>
+    <div nz-col nzSpan = 2><span style="color: black;">From :</span></div>
+    <div nz-col nzSpan = 4><nz-date-picker
+        [nzShowTime] ="{nzDefaultOpenValue: startDateDefault}"
+        nzFormat="yyyy-MM-dd HH:mm:ss"
+        [(ngModel)]="startValue"
+        nzPlaceHolder="Start"       
+        nzSize = "small"
+      ></nz-date-picker></div>
+      <div nz-col nzSpan = 2><span style="color: black;">To :</span></div>
+      <div nz-col nzSpan = 4><nz-date-picker
+        [nzShowTime] ="{nzDefaultOpenValue: startDateDefault}"
+        nzFormat="yyyy-MM-dd HH:mm:ss"
+        [(ngModel)]="endValue"
+        nzPlaceHolder="End"       
+        nzSize = "small"
+        
+      ></nz-date-picker></div>
+      <div nz-col nzSpan = 4></div>
+</div>
+
+<br/>
+    
+    <div style=" overflow: auto; height: '55vh'; padding-left: 50px;">
+     
+    <nz-table #basicTable [nzData]="stocks" nzSize = "small" NZ-S 
+    nzShowSizeChanger 
+    nzBordered
+    nzPaginationPosition = "top"    
+    >
+        <thead>
+          <tr>
+            <th nzWidth = "20%">Stock Price</th>
+            <th nzWidth = "40%">Date</th>
+            <th nzWidth = "40%">Time</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{data.Price}}</td>
+            <td>{{data.DateComponent}}</td>
+            <td>{{data.TimeComponent}}</td>             
+          </tr>
+        </tbody>
+      </nz-table>
+     
+ 
+</div>
+
+    <div nz-row style="width: 100%;">
+        <div nz-col nzSpan = 8></div>
+        <div nz-col nzSpan = 4><span>Min</span></div>
+        <div nz-col nzSpan = 4><span>{{minValue}}</span></div>
+        <div nz-col nzSpan = 8></div>
+    </div>
+    <div nz-row style="width: 100%;">
+        <div nz-col nzSpan = 8></div>
+        <div nz-col nzSpan = 4><span>Max</span></div>
+        <div nz-col nzSpan = 4><span>{{maxValue}}</span></div>
+        <div nz-col nzSpan = 8></div>
+    </div>
+    <div nz-row style="width: 100%;">
+        <div nz-col nzSpan = 8></div>
+        <div nz-col nzSpan = 4><span>Avg</span></div>
+        <div nz-col nzSpan = 4><span>{{averageValue}}</span></div>
+        <div nz-col nzSpan = 8></div>
+    </div>
+ 
+</nz-card>  
+</div>

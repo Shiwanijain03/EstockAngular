@@ -1,0 +1,77 @@
+<div style="background: #ECECEC;padding:10px;overflow: auto;height: 100%;">
+  <nz-card style="height: 100%;color: black;">
+<button nz-button size="small" nzType="primary" (click) ="navigateBack()">Back to main screen</button>
+<br/>
+<nz-card>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="code">Company Code</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mandatory Field">
+        <input nz-input formControlName="code" id="code" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item> 
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>Company Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mandatory Field">
+        <input
+          nz-input           
+          id="name"
+          formControlName="name"           
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="ceo" nzRequired>Company CEO</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mandatory Field">
+          <input
+            nz-input           
+            id="ceo"
+            formControlName="ceo"           
+          />
+        </nz-form-control>
+      </nz-form-item>
+     
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="turnover" nzRequired>Company Turnover(in Cr.)</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Company Turnover must be greater than 10Cr">
+          <input
+            nz-input           
+            id="turnover"
+            formControlName="turnover"  
+            type="number"         
+          />
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" nzRequired>Company Website</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mandatory Field">
+          <input
+            nz-input           
+            id="website"
+            formControlName="website"  
+            type="url"
+          />
+        </nz-form-control>
+      </nz-form-item>
+     
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="exchange" nzRequired>Stock Exchange</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Mandatory Field">
+          <input
+            nz-input           
+            id="exchange"
+            formControlName="exchange"  
+          />
+        </nz-form-control>
+      </nz-form-item>
+     
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button nzType="primary">Register</button>
+        </nz-form-control>
+      </nz-form-item>
+  </form>
+</nz-card>
+</nz-card>
+</div>
